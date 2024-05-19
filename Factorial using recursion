@@ -1,0 +1,27 @@
+def factorial(n):
+    """
+    Recursively calculate the factorial of a number n.
+    
+    :param n: Integer, the number for which to calculate the factorial
+    :return: Integer, the factorial of n
+    """
+    # Base case: the factorial of 0 or 1 is 1
+    if n == 0 or n == 1:
+        return 1
+    # Recursive case: n! = n * (n-1)!
+    else:
+        return n * factorial(n - 1)
+
+def main():
+    # Prompt the user to enter a number
+    print()
+    number = int(input())
+    
+    # Calculate the factorial using the recursive function
+    result = factorial(number)
+    
+    # Print the result
+    print(result)
+
+if __name__ == "__main__":
+    main()
