@@ -1,0 +1,10 @@
+a=int(input("Enter the cost price\n"))
+b=int(input("Enter the selling price\n"))
+if b>a:
+    x=((b-a)/a*100)
+    print("Profit %.1f"%x)
+elif b<a:
+    y=((a-b)/a*100)
+    print("Loss %.1f"%y)
+else:
+     print("No Profit No Loss")
