@@ -1,0 +1,4 @@
+n=int(input().strip())
+sum_of_even=n*(n+1)
+
+print(sum_of_even)
