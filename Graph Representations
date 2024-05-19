@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h> // Include for strcmp function
+
+void matrix(int **w, int n) {
+    printf("Adjacency Matrix Representation:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d ", w[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int n, e;
+    printf("Please enter the number of nodes in the graph\n");
+    scanf("%d", &n);
+
+    printf("Please enter the number of edges in the graph\n");
+    scanf("%d", &e);
+
+    int **w = (int **)malloc(n * sizeof(int *));
+    for (int i = 0; i < n; i++) {
+        w[i] = (int *)calloc(n, sizeof(int));
+    }
+
+    printf("Is the graph directed\n");
+    char ch[4];
+    scanf("%s", ch);
+
+    if (strcmp(ch, "no") == 0) {
+        for (int i = 0; i < e; i++) {
+            printf("Enter the start node, end node and weight of edge no %d\n", i);
+            int b, c, weight;
+            scanf("%d %d %d", &b, &c, &weight);
+            w[b][c] = weight;
+            w[c][b] = weight;
+        }
+    } else {
+        for (int i = 0; i < e; i++) {
+            printf("Enter the start node, end node and weight of edge no %d\n", i);
+            int b, c, weight;
+            scanf("%d %d %d", &b, &c, &weight);
+            w[b][c] = weight;
+        }
+    }
+
+    matrix(w, n);
+
+    // Free dynamically allocated memory
+    for (int i = 0; i < n; i++) {
+        free(w[i]);
+    }
+    free(w);
+
+    return 0;
+}
