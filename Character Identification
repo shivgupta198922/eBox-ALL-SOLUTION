@@ -1,0 +1,10 @@
+def character_type(char):
+  if char.isalpha():
+    return "Alphabet"
+  elif char.isdigit():
+    return "Digit"
+  else:
+    return "Special character"
+print("Enter a character")
+char=input().strip()
+print(character_type(char))
