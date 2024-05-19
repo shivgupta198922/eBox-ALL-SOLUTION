@@ -1,0 +1,16 @@
+weight=int(input("Enter the weight of luggage\n"))
+if weight<= 0:
+  print("Invalid Input")
+  exit()
+w=weight-15
+if w<=30 and w>0:
+  pay=w*50
+  print(f"Need to pay extra amount of Rs.{pay}")
+elif w<=60 and w>30:
+  pay=w*150
+  print(f"Need to pay extra amount of Rs.{pay}")
+elif w>60:
+  pay=w*250
+  print(f"Need to pay extra amount of Rs.{pay}")
+else:
+  print("No need to pay extra amount")
