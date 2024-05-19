@@ -1,0 +1,9 @@
+X=int(input("Enter the value of X\n"))
+Y=int(input("Enter the value of Y\n"))
+#c=Y//2
+c=(Y-5*X)//13
+a=c+X
+s=2*c
+print("Number of children tickets sold :",c)
+print("Number of adult tickets sold :",a)
+print("Number of senior tickets sold :",s)
