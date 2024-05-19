@@ -1,0 +1,12 @@
+A=int(input("Enter Number-1\n"))
+B=int(input("Enter Number-2\n"))
+print("Before swapping:-")
+print("Number 1 :",A)
+print("Number 2 :",B)
+print("After swapping:-")
+A,B=B,A
+#a=A
+#A=B
+#B=a
+print("Number 1 :",A)
+print("Number 2 :",B)
