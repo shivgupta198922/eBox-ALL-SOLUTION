@@ -1,0 +1,24 @@
+def main():
+    # Input for the first set, read directly from standard input
+    set1_input = input().strip()
+    set1 = set(map(int, set1_input.split(',')))
+    
+    # Input for the second set, read directly from standard input
+    set2_input = input().strip()
+    set2 = set(map(int, set2_input.split(',')))
+    
+    # Calculate the symmetric difference
+    symmetric_diff = set1.symmetric_difference(set2)
+    
+    # Check if the symmetric difference is empty (i.e., the sets are identical)
+    if not symmetric_diff:
+        print("invalid set")
+    else:
+        # Output the symmetric difference in sorted order
+        # Convert the set to a sorted list and format for output
+        sorted_symmetric_diff = sorted(symmetric_diff)
+        # Format output as a set
+        print("{" + ", ".join(map(str, sorted_symmetric_diff)) + "}")
+
+if __name__ == "__main__":
+    main()
