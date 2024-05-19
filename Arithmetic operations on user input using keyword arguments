@@ -1,0 +1,26 @@
+def keyword(arg1, arg2, arg3):
+    """
+    Perform arithmetic operation on the inputs.
+    Subtract arg2 from arg1, then add arg3 to the result.
+    :param arg1: First argument.
+    :param arg2: Second argument.
+    :param arg3: Third argument.
+    :return: None, prints the result of the calculation.
+    """
+    result = arg1 - arg2 + arg3
+    print(result)
+
+def main():
+    # Prompt user for three integer inputs
+    print()
+    x = int(input())
+    y = int(input())
+    z = int(input())
+    
+    # Call the function in different orderings using keyword arguments
+    keyword(arg1=x, arg2=y, arg3=z)  # normal order
+    keyword(arg2=x, arg3=y, arg1=z)  # mixed order 1
+    keyword(arg3=x, arg1=y, arg2=z)  # mixed order 2
+
+if __name__ == "__main__":
+    main()
