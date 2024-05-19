@@ -1,0 +1,14 @@
+n=int(input())
+I1=[]
+for i in range(0,n):
+    x=int(input())
+    I1.append(x)
+I2=[]
+for i in range(0,n):
+    x=int(input())
+    I2.append(x)
+sum=[]
+for i in range(0,n):
+    sum.append(I1[i]+I2[i])
+for i in range(0,n):
+    print(sum[i],end=" ")
