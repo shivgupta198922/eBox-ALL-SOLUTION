@@ -1,0 +1,21 @@
+def word_count(sentence):
+    # Split the sentence into words
+    words = sentence.split()
+
+    # Initialize an empty dictionary to store word counts
+    word_counts = {}
+
+    # Count occurrences of each word in the sentence
+    for word in words:
+        word_counts[word] = word_counts.get(word, 0) + 1
+
+    return word_counts
+
+# Read the sentence from the user
+sentence = input( )
+
+# Calculate word counts
+counts = word_count(sentence)
+
+# Display the word counts
+print(counts)
