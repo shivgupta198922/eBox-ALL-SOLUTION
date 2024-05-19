@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct tnode {
+    int data;
+    struct tnode *leftc;
+    struct tnode *rightc;
+};
+
+void insert(struct tnode **root, int num) {
+    if (*root == NULL) {
+        *root = (struct tnode *)malloc(sizeof(struct tnode));
+        (*root)->data = num;
+        (*root)->leftc = (*root)->rightc = NULL;
+    } else {
+        if (num < (*root)->data)
+            insert(&((*root)->leftc), num);
+        else
+            insert(&((*root)->rightc), num);
+    }
+}
+
+void inorder(struct tnode *s) {
+    if (s != NULL) {
+        inorder(s->leftc);
+        printf("%d ", s->data);
+        inorder(s->rightc);
+    }
+}
+
+void preorder(struct tnode *s) {
+    if (s != NULL) {
+        printf(" %d", s->data);
+        preorder(s->leftc);
+        preorder(s->rightc);
+    }
+}
+
+void postorder(struct tnode *s) {
+    if (s != NULL) {
+        postorder(s->leftc);
+        postorder(s->rightc);
+        printf("%d ", s->data);
+    }
+}
+
+int main() {
+    struct tnode *root = NULL;
+    char choice[3];
+
+    do {
+        int num;
+        printf("Enter the element to be inserted in the tree\n");
+        scanf("%d", &num);
+        insert(&root, num);
+        printf("Do you want to insert another element?\n");
+        scanf("%s", choice);
+    } while (choice[0] == 'y' || choice[0] == 'Y');
+
+    printf("\nInorder Traversal : The elements in the tree are ");
+    inorder(root);
+    printf("\nPreorder Traversal : The elements in the tree are");
+    preorder(root);
+    printf("\nPostorder Traversal : The elements in the tree are ");
+    postorder(root);
+    printf("\n");
+
+    return 0;
+}
