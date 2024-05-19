@@ -1,0 +1,30 @@
+def main():
+    # Input the code string
+    code = input()
+    
+    # Normalize the string to upper case to make it case-insensitive
+    code = code.upper()
+    
+    # Find the unique characters in the code
+    unique_chars = set(code)
+    
+    # Check for exactly two distinct characters
+    if len(unique_chars) != 2:
+        print("No")
+        return
+    
+    # Extract the two distinct characters
+    char1, char2 = list(unique_chars)
+    
+    # Build the expected patterns for alternation
+    pattern1 = (char1 + char2) * (len(code) // 2) + (char1 if len(code) % 2 != 0 else '')
+    pattern2 = (char2 + char1) * (len(code) // 2) + (char2 if len(code) % 2 != 0 else '')
+    
+    # Check if the code matches either of the expected patterns
+    if code == pattern1 or code == pattern2:
+        print("Yes")
+    else:
+        print("No")
+
+if __name__ == "__main__":
+    main()
