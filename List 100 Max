@@ -1,0 +1,22 @@
+def main():
+    # Prompt the user for the size of the list
+    print("Enter list size")
+    list_size = int(input())
+    
+    # Prompt the user for list elements
+    print("Enter list elements")
+    elements = []
+    for _ in range(list_size):
+        element = int(input())
+        if element < 100:
+            elements.append(element)
+    
+    # Find the maximum number less than 100
+    if elements:  # Checking if the list is not empty
+        max_value = max(elements)
+        print(f"The max is {max_value}")
+    else:
+        print("No elements less than 100")
+
+if __name__ == "__main__":
+    main()
