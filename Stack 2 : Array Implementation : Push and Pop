@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct stack {
+    int *a;
+    int top;
+    int maxSize;
+};
+
+void initstack(struct stack *p, int maxSize) {
+    p->a = (int *)malloc(maxSize * sizeof(int));
+    p->top = -1;
+    p->maxSize = maxSize;
+}
+
+void push(struct stack *p, int item) {
+    if (p->top == p->maxSize - 1) {
+        printf("Stack is full\n");
+        return;
+    }
+    p->top++;
+    *(p->a + p->top) = item;
+}
+
+int pop(struct stack *p) {
+    if (p->top == -1) {
+        printf("Stack is empty\n");
+        return -1000;
+    }
+    int item = *(p->a + p->top);
+    p->top--;
+    return item;
+}
+
+void display(struct stack p) {
+    if (p.top == -1) {
+        printf(" {}\n");
+        return;
+    }
+    for (int i = 0; i <= p.top; i++) {
+        printf(" %d", *(p.a + i));
+    }
+ // printf("\n");
+}
+
+int main() {
+    struct stack s;
+    int maxSize, choice, item;
+
+    printf("Enter the maximum size of the stack\n");
+    scanf("%d", &maxSize);
+
+    initstack(&s, maxSize);
+
+    do {
+        printf("\nChoice 1 : Push\n");
+        printf("Choice 2 : Pop\n");
+        printf("Choice 3 : Display\n");
+        printf("Any other choice : Exit\n");
+        printf("Enter your choice\n");
+
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter the element to be pushed\n");
+                scanf("%d", &item);
+                push(&s, item);
+                break;
+            case 2:
+                item = pop(&s);
+                if (item != -1000) {
+                    printf("The popped element is %d\n", item);
+                }
+                break;
+            case 3:
+                printf("The contents of the stack are");
+                display(s);
+                break;
+            default:
+                free(s.a);
+                return 0;
+        }
+    } while (1);
+}
