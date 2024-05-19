@@ -1,0 +1,48 @@
+def rectangle_area(length, breadth):
+    """Calculate and return the area of a rectangle."""
+    return length * breadth
+
+def circle_area(radius):
+    """Calculate and return the area of a circle."""
+    pi = 3.14
+    return pi * radius * radius
+
+def triangle_area(base, height):
+    """Calculate and return the area of a triangle."""
+    return 0.5 * base * height
+
+def main():
+    print("Menu:")
+    print("1. Rectangle")
+    print("2. Circle")
+    print("3. Triangle")
+    print("Enter your choice:")
+    choice = int(input())
+    
+    if choice == 1:
+        print("Enter the length:")
+        length = int(input())
+        print("Enter the breadth:")
+        breadth = int(input())
+        area = rectangle_area(length, breadth)
+        print(f"Rectangle area is {area}")
+        
+    elif choice == 2:
+        print("Enter the radius:")
+        radius = float(input())
+        area = circle_area(radius)
+        print(f"Circle area is {area:.2f}")
+        
+    elif choice == 3:
+        print("Enter the base:")
+        base = float(input())
+        print("Enter the height:")
+        height = float(input())
+        area = triangle_area(base, height)
+        print(f"Triangle area is {area:.2f}")
+        
+    else:
+        print("Invalid choice")
+
+if __name__ == "__main__":
+    main()
