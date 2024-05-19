@@ -1,0 +1,34 @@
+def main():
+    # Prompt user to enter the length of the lists
+    n = int(input("Enter the length of the list:\n"))
+
+    # Prompt user to enter the elements for the first list
+    print("Enter the elements for first list:")
+    list1 = list(map(int, input().split()))
+
+    # Ensure that the user enters the correct number of elements
+    while len(list1) != n:
+        print(f"Please enter exactly {n} elements.")
+        list1 = list(map(int, input().split()))
+    
+    # Prompt user to enter the elements for the second list
+    print("Enter the elements for second list:")
+    list2 = list(map(int, input().split()))
+
+    # Ensure that the user enters the correct number of elements
+    while len(list2) != n:
+        print(f"Please enter exactly {n} elements.")
+        list2 = list(map(int, input().split()))
+
+    # Merge the two lists
+    merged_list = list1 + list2
+    print("Merging of two lists:")
+    print(merged_list)
+
+    # Sort the merged list
+    sorted_list = sorted(merged_list)
+    print("Sorted list:")
+    print(sorted_list)
+
+if __name__ == "__main__":
+    main()
