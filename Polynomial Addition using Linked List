@@ -1,0 +1,127 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct term
+{
+    int coeff;
+    int expo;
+    struct term *next;
+};
+
+void polyappend(struct term **poly, int coeff, int expo)
+{
+    struct term *temp, *rear;
+    temp = (struct term *)malloc(sizeof(struct term));
+    temp->coeff = coeff;
+    temp->expo = expo;
+    temp->next = NULL;
+    if (*poly == NULL)
+        *poly = temp;
+    else
+    {
+        rear = *poly;
+        while (rear->next != NULL)
+            rear = rear->next;
+        rear->next = temp;
+    }
+}
+
+struct term *polyadd(struct term *poly1, struct term *poly2)
+{
+    struct term *result = NULL;
+    while (poly1 != NULL && poly2 != NULL)
+    {
+        if (poly1->expo > poly2->expo)
+        {
+            polyappend(&result, poly1->coeff, poly1->expo);
+            poly1 = poly1->next;
+        }
+        else if (poly1->expo < poly2->expo)
+        {
+            polyappend(&result, poly2->coeff, poly2->expo);
+            poly2 = poly2->next;
+        }
+        else
+        {
+            int sum_coeff = poly1->coeff + poly2->coeff;
+            if (sum_coeff != 0)
+                polyappend(&result, sum_coeff, poly1->expo);
+            poly1 = poly1->next;
+            poly2 = poly2->next;
+        }
+    }
+    while (poly1 != NULL)
+    {
+        polyappend(&result, poly1->coeff, poly1->expo);
+        poly1 = poly1->next;
+    }
+    while (poly2 != NULL)
+    {
+        polyappend(&result, poly2->coeff, poly2->expo);
+        poly2 = poly2->next;
+    }
+    return result;
+}
+
+void display(struct term *poly)
+{
+    if (poly == NULL)
+    {
+        printf("0\n");
+        return;
+    }
+    while (poly != NULL)
+    {
+        if (poly->coeff != 0)
+        {
+            printf("%d", poly->coeff);
+            if (poly->expo != 0)
+                printf(" x^%d", poly->expo);
+            if (poly->next != NULL && poly->next->coeff != 0)
+                printf(" + ");
+        }
+        poly = poly->next;
+    }
+    printf("\n");
+}
+
+int main()
+{
+    struct term *poly1 = NULL, *poly2 = NULL, *result = NULL;
+    int m, n, coeff, expo;
+    
+    // Input for first polynomial
+    printf("Enter the number of terms in the first polynomial\n");
+    scanf("%d", &m);
+    for (int i = 0; i < m; i++)
+    {
+        printf("Enter the coefficient and exponent of term %d in the first polynomial:\n",i+1);
+        scanf("%d %d", &coeff, &expo);
+        polyappend(&poly1, coeff, expo);
+    }
+    
+    // Input for second polynomial
+    printf("Enter the number of terms in the second polynomial\n");
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
+    {
+    printf("Enter the coefficient and exponent of term %d in the second polynomial:\n",i+1);
+        scanf("%d %d", &coeff, &expo);
+        polyappend(&poly2, coeff, expo);
+    }
+    
+    // Displaying polynomials
+    printf("First Polynomial:\n");
+    display(poly1);
+    printf("Second Polynomial:\n");
+    display(poly2);
+    
+    // Performing polynomial addition
+    result = polyadd(poly1, poly2);
+    
+    // Displaying result
+    printf("Resultant Polynomial:\n");
+    display(result);
+    
+    return 0;
+}
