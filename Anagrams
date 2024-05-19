@@ -1,0 +1,17 @@
+def main():
+    # Input the first string
+    print("Enter the first string")
+    str1 = input().strip().replace(' ', '').lower()
+
+    # Input the second string
+    print("Enter the second string")
+    str2 = input().strip().replace(' ', '').lower()
+
+    # Sort the characters of the strings and compare
+    if sorted(str1) == sorted(str2):
+        print(f"{str1} and {str2} are anagrams")
+    else:
+        print(f"{  str1} and {str2} are not anagrams")
+
+if __name__ == "__main__":
+    main()
