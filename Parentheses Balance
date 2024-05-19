@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Structure for the stack
+struct stack {
+    char *s;
+    int top;
+};
+
+// Function to initialize the stack
+void initstack(struct stack *p) {
+    p->top = -1;
+    p->s = (char *)malloc(128 * sizeof(char)); // Assuming maximum string length is 128
+}
+
+// Function to push an item onto the stack
+void push(struct stack *p, char item) {
+    p->top++;
+    p->s[p->top] = item;
+}
+
+// Function to pop an item from the stack
+char pop(struct stack *p) {
+    char item = p->s[p->top];
+    p->top--;
+    return item;
+}
+
+// Function to check if parentheses are balanced
+void balancedornot(struct stack p, char *par) {
+    initstack(&p); // Initialize the stack
+    int i;
+    char c;
+    for (i = 0; i < strlen(par); i++) {
+        if (par[i] == '(' || par[i] == '[') {
+            push(&p, par[i]); // Push opening parentheses onto the stack
+        } else if (par[i] == ')' || par[i] == ']') {
+            if (p.top == -1) {
+                printf("No\n"); // Stack is empty, parentheses are not balanced
+                return;
+            } else {
+                c = pop(&p); // Pop character from stack
+                if ((c == '(' && par[i] == ']') || (c == '[' && par[i] == ')')) {
+                    printf("No\n"); // Mismatched parentheses
+                    return;
+                }
+            }
+        }
+    }
+    if (p.top == -1) {
+        printf("Yes\n"); // Stack is empty, parentheses are balanced
+    } else {
+        printf("No\n"); // Stack is not empty, parentheses are not balanced
+    }
+}
+
+int main() {
+    int n, i;
+    scanf("%d", &n); // Read number of strings
+
+    for (i = 0; i < n; i++) {
+        struct stack p;
+        char par[128];
+
+        initstack(&p); // Initialize the stack
+
+        scanf("%s", par); // Read string of parentheses
+        balancedornot(p, par); // Check if parentheses are balanced
+    }
+
+    return 0;
+}
