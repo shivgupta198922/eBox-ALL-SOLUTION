@@ -1,0 +1,6 @@
+start, end=map(int,input().split())
+count=0
+for num in range(start, end+1):
+    if str(num).count('3')==3:
+        count+=1
+print(count)
