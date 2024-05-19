@@ -1,0 +1,14 @@
+branding=int(input("Enter branding expenses\n"))
+travel=int(input("Enter travel expenses\n"))
+food=int(input("Enter food expenses\n"))
+lo=int(input("Enter logistics expenses\n"))
+s=float(branding+travel+food+lo)
+bp=(branding/s)*100
+tp=(travel/s)*100
+fp=(food/s)*100
+lp=(lo/s)*100
+print("Total expenses : Rs.{:.2f}".format(s))
+print("Branding expenses percentage : {:.2f}%".format(bp))
+print("Travel expenses percentage : {:.2f}%".format(tp))
+print("Food expenses percentage : {:.2f}%".format(fp))
+print("Logistics expenses percentage : {:.2f}%".format(lp))
