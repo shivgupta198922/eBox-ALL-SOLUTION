@@ -1,0 +1,23 @@
+import math
+print("Enter the values of a,b,c :\n")
+a=int(input( ))
+b=int(input( ))
+c=int(input( ))
+equation=b**2-4*a*c
+if equation>0:
+    root1=(-b+math.sqrt(equation))/(2*a)
+    root2=(-b-math.sqrt(equation))/(2*a)
+    print("The roots are:")
+    print(f"root1 = {root1:.1f}")
+    print(f"root2 = {root2:.1f}")
+elif equation == 0:
+    root=(-b)/(2*a)
+    print("The roots are:")
+    print(f"root1 = {root:.1f}")
+    print(f"root2 = {root:.1f}")
+else:
+    real=(-b)/(2*a)
+    imaginary=(math.sqrt(abs(equation)))/(2*a)
+    print("The roots are:")
+    print(f"root1 = {real:.1f} + {imaginary:.1f}i")
+    print(f"root2 = {real:.1f} - {imaginary:.1f}i")
