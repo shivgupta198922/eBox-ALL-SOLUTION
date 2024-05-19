@@ -1,0 +1,23 @@
+def multiply(argument1, argument2=10):
+    """Function to multiply two numbers, with the second number defaulting to 10."""
+    return argument1 * argument2
+
+def main():
+    # Reading two integers from input
+    a = int(input())
+    b = int(input())
+
+    # First function call: using only the first argument
+    result1 = multiply(a)
+    print(f"The result is {result1}")
+
+    # Second function call: using both provided arguments
+    result2 = multiply(a, b)
+    print(f"The result is {result2}")
+
+    # Third function call: first argument and the second argument set to 9
+    result3 = multiply(a, argument2=9)
+    print(f"The result is {result3}")
+
+if __name__ == "__main__":
+    main()
