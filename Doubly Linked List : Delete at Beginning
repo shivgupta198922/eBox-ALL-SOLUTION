@@ -1,0 +1,120 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Student {
+    int id;
+    char name[10];
+    char gender[10];
+    struct Student* prev;
+    struct Student* next;
+};
+
+struct DoublyLinkedList {
+    void (*append)(struct Student**, struct Student);
+    void (*display)(struct Student*);
+    void (*delAtBeg)(struct Student**);
+};
+
+void append(struct Student** q, struct Student s) {
+    //Fill your code here
+    struct Student*ns,*t;
+    t = *q;
+    ns=(struct Student*)malloc(sizeof(struct Student));
+    *ns = s;
+   /*ns->id=s.id;
+   strcpy(ns->name,s.name);
+   strcpy(ns->gender,s.gender);*/
+    ns->prev=NULL;
+    ns->next=NULL;
+    if(t==NULL)
+    {
+        *q=ns;
+    }
+    else{
+        while(t->next!=NULL)
+        {
+            t=t->next;
+        }
+        ns->prev=t;
+        t->next=ns;
+    }
+}
+
+void display(struct Student* q) {
+  //Fill your code here
+
+  while(q!=NULL)
+  {
+      printf("%4d %10s %7s \n",q->id,q->name,q->gender);
+      q=q->next;
+  }
+}
+
+void delAtBeg(struct Student** q) {
+   //Fill your code here
+   struct Student*t;
+  // t = *q;
+   if(*q==NULL)
+   {
+      printf("The linked list is empty\n");
+      return;
+   }
+   t=*q;
+   *q=(*q)->next;
+   free(t);
+  // (*q)->prev=NULL;
+   if(*q!=NULL)
+   {
+       (*q)->prev=NULL;
+   }
+}
+
+int main() {
+    struct DoublyLinkedList dl;
+    dl.append = append;
+    dl.display = display;
+    dl.delAtBeg = delAtBeg;
+
+    struct Student* students = NULL;
+    char ch[3];
+
+    do {
+        int id;
+        char name[10];
+        char gender[10];
+
+        printf("Enter the id\n");
+        scanf("%d", &id);
+        printf("Enter the name\n");
+        scanf("%s", name);
+        printf("Enter the gender\n");
+        scanf("%s", gender);
+
+        struct Student s;
+        s.id = id;
+        strcpy(s.name, name);
+        strcpy(s.gender, gender);
+
+        dl.append(&students, s);
+
+        printf("Do you want to add details of another student? Type Yes/No\n");
+        scanf("%s", ch);
+    } while (strcmp(ch, "Yes") == 0);
+
+    printf("The details of the students are\n");
+    printf("%4s %10s %7s\n", "ID", "Name", "Gender");
+    dl.display(students);
+
+    do {
+        dl.delAtBeg(&students);
+        printf("The details of the students after deleting a student are\n");
+        printf("%4s %10s %7s\n", "ID", "Name", "Gender");
+        dl.display(students);
+
+        printf("Do you want to delete details of another student? Type Yes/No\n");
+        scanf("%s", ch);
+    } while (strcmp(ch, "Yes") == 0);
+
+    return 0;
+}
