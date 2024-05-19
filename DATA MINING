@@ -1,0 +1,14 @@
+n=int(input())
+n_str=str(n)
+even=0
+odd=0
+for digit in n_str:
+    digit=int(digit)
+    if digit % 2 == 0:
+         even +=digit    
+    else:
+         odd +=digit
+if odd==even:
+    print("yes") 
+else:
+    print("no")
