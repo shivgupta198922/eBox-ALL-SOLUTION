@@ -1,0 +1,24 @@
+def main():
+    print("Enter total Number of sheets:")
+    n = int(input())
+    attendance_sheets = []
+    
+    for i in range(n):
+        entries = input().strip()  
+        sheet = tuple(map(int, entries.split()))
+        attendance_sheets.append(sheet)
+    
+    attendance_sheets_tuple = tuple(attendance_sheets)
+    print("Attendance Sheets with Register Number: ")
+    print(attendance_sheets_tuple)
+    unique_registers = set()
+
+    for sheet in attendance_sheets:
+        unique_registers.update(sheet)
+    final_sheet = tuple(sorted(unique_registers))
+    
+    print("Final sheet: ")
+    print(final_sheet)
+
+if __name__ == "__main__":
+    main()
