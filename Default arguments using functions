@@ -1,0 +1,31 @@
+def greet(name, message="Welcome to Python Programming"):
+    """Function to greet the user with a given name and an optional message."""
+    print(f"Hello {name}, {message}")
+
+def main():
+    # Display menu options
+    print("Menu")
+    print("1. Name and Message")
+    print("2. Name")
+    
+    # Get user choice
+    choice = input()
+    
+    if choice == '1':
+        # Option to enter both name and message
+        print("Enter the name")
+        name = input()
+        print("Enter the message")
+        message = input()
+        greet(name, message)
+    elif choice == '2':
+        # Option to enter only name and use default message
+        print("Enter the name")
+        name = input()
+        greet(name)
+    else:
+        # Handle unexpected input
+        print("Invalid choice")
+
+if __name__ == "__main__":
+    main()
