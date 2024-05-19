@@ -1,0 +1,23 @@
+def my_function(argument1, argument2, argument3):
+    """
+    Function that prints the three given arguments three times.
+    :param argument1: First integer input.
+    :param argument2: Second integer input.
+    :param argument3: Third integer input.
+    """
+    # Print the arguments in the specified format
+    for _ in range(3):
+        print(argument1, argument2, argument3)
+
+def main():
+    # Input: Receive three integers from the user
+    print()
+    a = int(input())
+    b = int(input())
+    c = int(input())
+    
+    # Function call
+    my_function(a, b, c)
+
+if __name__ == "__main__":
+    main()
