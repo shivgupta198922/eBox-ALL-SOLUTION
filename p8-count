@@ -1,0 +1,20 @@
+print("Enter a string")
+str1=str(input())
+vcount=0
+ccount=0
+dcount=0
+scount=0
+for i in str1:
+    if (i.isaplha()):
+        if i in range(a,e,i,o,u,A,I,E,O,U):
+            vcount +=1
+        else:
+            ccount +=1
+    elif (i.isdigit()):
+        dcount +=1
+    else:
+        scount +=1
+print("Vowel count : ",vcount)
+print("Consonant count : ",ccount)
+print("Digit count :",dcount)
+print("Space count : ",scount)
