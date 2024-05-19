@@ -1,0 +1,22 @@
+def main():
+    # Read the input string of integers separated by spaces
+    input_string = input().strip()
+    
+    # Convert the input string to a tuple of integers
+    numbers_tuple = tuple(int(num) for num in input_string.split())
+    
+    # Display the initial value of the tuple
+    print(f"Initial Value: {numbers_tuple}")
+    
+    # Use list comprehension to filter out non-zero and zero elements separately
+    non_zero = [num for num in numbers_tuple if num != 0]
+    zeros = [num for num in numbers_tuple if num == 0]
+    
+    # Combine non-zero elements and zeros in the correct order
+    final_tuple = tuple(non_zero + zeros)
+    
+    # Display the final rearranged tuple
+    print(f"Final value: {final_tuple}")
+
+if __name__ == "__main__":
+    main()
