@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, rithicks_ticket;
+
+    // Read the total number of tickets
+    printf("Enter the total number of tickets:\n");
+    scanf("%d", &n);
+
+    // Read the ticket numbers
+    int tickets[n];
+   // printf("Enter the ticket numbers:\n");
+    for (i = 0; i < n; ++i) {
+        printf("Enter the ticket number %d:\n", i + 1);
+        scanf("%d", &tickets[i]);
+    }
+
+    // Print the ticket numbers
+    printf("The ticket numbers are:\n");
+    for (i = 0; i < n; ++i) {
+        printf("%d ", tickets[i]);
+    }
+    printf("\n");
+
+    // Read Rithick's ticket number
+    printf("Enter the ticket number to be searched:\n");
+    scanf("%d", &rithicks_ticket);
+
+    // Search for Rithick's ticket number
+    int position = -1;
+    for (i = 0; i < n; ++i) {
+        if (tickets[i] == rithicks_ticket) {
+            position = i + 1;
+            break;
+        }
+    }
+
+    // Print the result
+    if (position != -1) {
+        printf("The ticket number %d is found at position %d\n", rithicks_ticket, position);
+        printf("Congratulations!You have won the lottery\n");
+    } else {
+        printf("Sorry the ticket number %d is not there.Better luck next time!\n", rithicks_ticket);
+    }
+
+    return 0;
+}
