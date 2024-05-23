@@ -1,0 +1,65 @@
+#include<stdio.h>
+#include<stdbool.h>
+
+#define INF 9999999
+#define V 5
+
+int main() {
+    int graph[V][V];
+    int num_vertices;
+
+    // Input number of vertices
+    printf("Enter the number of vertices in the graph\n");
+    scanf("%d", &num_vertices);
+
+    // Input distance matrix of the graph
+    printf("Enter the distance matrix of the graph\n");
+    for (int i = 0; i < num_vertices; i++) {
+        for (int j = 0; j < num_vertices; j++) {
+            scanf("%d", &graph[i][j]);
+        }
+    }
+
+    // Array to track selected vertices
+    bool selected[V];
+    // Initialize all vertices as not selected
+    for (int i = 0; i < V; i++) {
+        selected[i] = false;
+    }
+    // Mark the first vertex as selected
+    selected[0] = true;
+
+    // Number of edges in MST
+    int num_edges = 0;
+
+    printf("\nThe edges are picked in the following order\n");
+
+    // Loop until all vertices are included in the MST
+    while (num_edges < num_vertices - 1) {
+        int min_weight = INF;
+        int u, v;
+
+        // Find the edge with the minimum weight
+        for (int i = 0; i < num_vertices; i++) {
+            if (selected[i]) {
+                for (int j = 0; j < num_vertices; j++) {
+                    if (!selected[j] && graph[i][j] && graph[i][j] < min_weight) {
+                        min_weight = graph[i][j];
+                        u = i;
+                        v = j;
+                    }
+                }
+            }
+        }
+
+        // Print the picked edge
+        printf("%d - %d = %d\n", u, v, min_weight);
+
+        // Mark vertex v as selected
+        selected[v] = true;
+
+        num_edges++;
+    }
+
+    return 0;
+}
